@@ -10,17 +10,17 @@ export default function Movies() {
   const [totalPages, setTotalPages] = useState(1);
   const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`;
 
-    axios
-      .get(url, {
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNzU1OGNjYjFlOTJiMDg0ZWZkN2I4NjQ3ZGMzMTc3MSIsInN1YiI6IjY3NDhjNjY2YzlhMjM2ZTUxY2YzYzA2MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qcmqwaFBuJGe5hwNH1kpORNZu1_u7Z-zqUSTv4W7e1E",
-        },
-      })
+    axios.get(url, {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
+      },
+    })
+    
       .then((res) => {
         setMovies(res.data.results);
         setTotalPages(res.data.total_pages);
