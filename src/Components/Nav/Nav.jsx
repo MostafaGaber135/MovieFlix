@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaHome, FaSearch, FaStar } from "react-icons/fa";
+import { FaHome, FaSearch, FaStar, FaBars, FaTimes } from "react-icons/fa";
 
 export default function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const navLinkClass = ({ isActive }) =>
+    `flex items-center gap-2 px-4 py-2 rounded-md transition ${
+      isActive ? "bg-red-600 text-white" : "text-white hover:bg-gray-800"
+    }`;
+
   return (
     <div className="navbar bg-black px-6 py-3 flex justify-between items-center sticky top-0 z-50 shadow-md">
       <NavLink
@@ -12,45 +21,32 @@ export default function Nav() {
         MovieFlix
       </NavLink>
 
-      <div className="flex items-center gap-6 text-white">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `flex items-center gap-2 px-4 py-2 rounded-md transition ${
-              isActive
-                ? "bg-red-600 text-white"
-                : "text-white hover:bg-gray-800"
-            }`
-          }
-        >
+      {/* Burger button */}
+      <button
+        className="text-white text-2xl md:hidden"
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Navigation Links */}
+      <div
+        className={`${
+          isOpen ? "flex" : "hidden"
+        } flex-col absolute top-full left-0 w-full bg-black text-white px-6 py-4 md:flex md:flex-row md:static md:w-auto md:gap-6 md:items-center`}
+      >
+        <NavLink to="/" className={navLinkClass}>
           <FaHome />
           Home
         </NavLink>
 
-        <NavLink
-          to="/search"
-          className={({ isActive }) =>
-            `flex items-center gap-2 px-4 py-2 rounded-md transition ${
-              isActive
-                ? "bg-red-600 text-white"
-                : "text-white hover:bg-gray-800"
-            }`
-          }
-        >
+        <NavLink to="/search" className={navLinkClass}>
           <FaSearch />
           Search
         </NavLink>
 
-        <NavLink
-          to="/favorites"
-          className={({ isActive }) =>
-            `flex items-center gap-2 px-4 py-2 rounded-md transition ${
-              isActive
-                ? "bg-red-600 text-white"
-                : "text-white hover:bg-gray-800"
-            }`
-          }
-        >
+        <NavLink to="/favorites" className={navLinkClass}>
           <FaStar />
           Favorites
         </NavLink>
