@@ -1,12 +1,59 @@
-# React + Vite
+# 🎬 MovieFlix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MovieFlix is a React-based movie browser that lets users search, explore, and view details of movies using the TMDb API. Users can add movies to a favorites list (saved in localStorage) and enjoy a responsive, clean UI built with Tailwind CSS and DaisyUI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔍 Live movie search  
+- 🎞 View movie details  
+- ❤️ Add/remove favorite movies  
+- 🧭 Navigate easily with React Router  
+- 🎨 Clean design with Tailwind CSS & DaisyUI  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧰 Technologies Used
+
+- React JS  
+- DaisyUI + Tailwind CSS  
+- React Router DOM  
+- LocalStorage  
+
+---
+
+## 📦 Installation
+
+To run the app locally:
+
+```bash
+git clone https://github.com/your-username/movieflix.git
+cd movieflix
+npm install
+npm run dev
+```
+---
+
+## 🔗 Live Demo
+
+[👉 View Live App](https://your-deployment-link.com)
+
+---
+
+## 📸 Screenshots
+
+| Home | Search | Favorites | Details |
+|------|--------|-----------|---------|
+| ![Home](src/assets/Home_Page.png) | ![Search](src/assets/Search_Page.png) | ![Favorites](src/assets/Favorites_Page.png) | ![Details](src/assets/Movies_Details_Page.png) |
+
+> 🖼 Make sure these image files exist in a folder named `assets` in your repo.
+
+---
+
+## 🙏 Acknowledgments
+
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [DaisyUI](https://daisyui.com/)
+- [TMDb API](https://www.themoviedb.org/)
