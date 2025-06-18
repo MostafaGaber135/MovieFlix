@@ -28,7 +28,7 @@ MovieFlix is a React-based movie browser that lets users search, explore, and vi
 To run the app locally:
 
 ```bash
-git clone https://github.com/your-username/movieflix.git
+git clone https://github.com/MostafaGaber135/MovieFlix.git
 cd movieflix
 npm install
 npm run dev
@@ -37,7 +37,7 @@ npm run dev
 
 ## 🔗 Live Demo
 
-[👉 View Live App](https://your-deployment-link.com)
+[👉 View Live App](https://movieflixyz.netlify.app/)
 
 ---
 
