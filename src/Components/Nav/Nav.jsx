@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FaHome, FaSearch, FaStar, FaBars, FaTimes } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,27 +43,54 @@ export default function Nav() {
       >
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
-
-      <div
-        className={`${
-          isOpen ? "flex" : "hidden"
-        } flex-col absolute top-full left-0 w-full bg-black text-white px-6 py-4 md:flex md:flex-row md:static md:w-auto md:gap-6 md:items-center`}
-      >
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobileMenu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col absolute top-full left-0 w-full bg-black text-white px-6 py-4 md:hidden"
+          >
+            <NavLink to="/" className={navLinkClass} onClick={toggleMenu}>
+              <FaHome /> Home
+            </NavLink>
+            <NavLink to="/search" className={navLinkClass} onClick={toggleMenu}>
+              <FaSearch /> Search
+            </NavLink>
+            <NavLink to="/favorites" className={navLinkClass} onClick={toggleMenu}>
+              <FaStar /> Favorites
+            </NavLink>
+            {user ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  toggleMenu();
+                }}
+                className="bg-red-600 text-white px-4 py-1 mt-2 rounded hover:bg-red-700"
+              >
+                Logout
+              </button>
+            ) : (
+              <NavLink to="/login" className={navLinkClass} onClick={toggleMenu}>
+                Login
+              </NavLink>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      <div className="hidden md:flex md:gap-6 md:items-center">
         <NavLink to="/" className={navLinkClass}>
-          <FaHome />
-          Home
+          <FaHome /> Home
         </NavLink>
-
         <NavLink to="/search" className={navLinkClass}>
-          <FaSearch />
-          Search
+          <FaSearch /> Search
         </NavLink>
-
         <NavLink to="/favorites" className={navLinkClass}>
-          <FaStar />
-          Favorites
+          <FaStar /> Favorites
         </NavLink>
-
         {user ? (
           <button
             onClick={handleLogout}
