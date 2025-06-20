@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FaHome, FaSearch, FaStar, FaBars, FaTimes } from "react-icons/fa";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -11,6 +14,17 @@ export default function Nav() {
     `flex items-center gap-2 px-4 py-2 rounded-md transition ${
       isActive ? "bg-red-600 text-white" : "text-white hover:bg-gray-800"
     }`;
+
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    setUser(currentUser);
+  }, [location]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    setUser(null);
+    navigate("/login");
+  };
 
   return (
     <div className="navbar bg-black px-6 py-3 flex justify-between items-center sticky top-0 z-50 shadow-md">
@@ -21,7 +35,6 @@ export default function Nav() {
         MovieFlix
       </NavLink>
 
-      {/* Burger button */}
       <button
         className="text-white text-2xl md:hidden"
         onClick={toggleMenu}
@@ -30,7 +43,6 @@ export default function Nav() {
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
 
-      {/* Navigation Links */}
       <div
         className={`${
           isOpen ? "flex" : "hidden"
@@ -50,6 +62,19 @@ export default function Nav() {
           <FaStar />
           Favorites
         </NavLink>
+
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700"
+          >
+            Logout
+          </button>
+        ) : (
+          <NavLink to="/login" className={navLinkClass}>
+            Login
+          </NavLink>
+        )}
       </div>
     </div>
   );
