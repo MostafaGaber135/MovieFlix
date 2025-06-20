@@ -10,6 +10,7 @@ import MovieDetails from "./Components/MovieDetails/MovieDetails";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import NotFound from "./Components/Notfound/Notfound";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
