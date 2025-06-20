@@ -59,7 +59,7 @@ npm run dev
 
 | Home | Search | Favorites (Protected | Details | Login | Register | 404 Page |
 |------|--------|-----------------------|--------|-------|----------|----------|
-| ![Home](src/assets/Home_Page.png) | ![Search](src/assets/Search_Page.png) | ![Favorites](src/assets/Favorites_Page.png) | ![Details](src/assets/Movies_Details_Page.png) | ![Login](src/assets/Login_Page.png) | ![Register](src/assets/Register.png) | ![Error](src/assets/Error_Page.png) |
+| ![Home](src/assets/Home_Page.png) | ![Search](src/assets/Search_Page.png) | ![Favorites](src/assets/Favorites_Page.png) | ![Details](src/assets/Movies_Details_Page.png) | ![Login](src/assets/Login_Page.png) | ![Register](src/assets/Register_Page.png) | ![Error](src/assets/Error_Page.png) |
 
 > 🖼 Make sure these image files exist in a folder named `assets` in your repo.
 
