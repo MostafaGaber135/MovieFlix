@@ -12,7 +12,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     axios
-      .get(`https:api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`)
+      .get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`)
       .then((res) => setMovie(res.data))
       .catch((err) => {
         console.error("Error:", err.response?.data || err.message || err);
