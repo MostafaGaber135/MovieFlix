@@ -80,7 +80,7 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       <div className="hidden md:flex md:gap-6 md:items-center">
         <NavLink to="/" className={navLinkClass}>
           <FaHome /> Home
